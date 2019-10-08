@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>ListaVIP</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<div id="listaDeConvidados">
+			<table class="table table-hover" border="1">
+				<thead>
+					<tr>
+						<th>Chamado</th>
+						<th>Data de abertura</th>
+						<th>Prioridade</th>
+						<th>Assunto</th>
+						<th>Fila</th>
+						<th>Status</th>
+						<th>Tempo restante</th>
+					</tr>
+				</thead>
+				<tr th:each="request,count : ${requests}" th:unless="${count.index > 9}" th:style="${request.assunto == 'SVD' ? 'background-color: orange' : 'background-color: white'}">
+					<td><span th:text="${request.Codigo}"></span></td>
+					<td><span th:text="${request.data}"></span></td>
+					<td><span th:text="${request.prioridade}"></span></td>
+					<td><span th:text="${request.assunto}"></span></td>
+					<td><span th:text="${request.ultimo_analista}"></span></td>
+					<td><span th:text="${request.estado}"></span></td>			
+					<td><span th:text="${request.HoraCalc}"></span></td>			
+				</tr>
+			</table>
+		</div>
+		<hr />
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
